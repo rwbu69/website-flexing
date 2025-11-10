@@ -238,14 +238,13 @@ function changeTheme(theme) {
     // Update current theme display
     const themeDisplay = document.getElementById('currentTheme');
     if (themeDisplay) {
-        themeDisplay.textContent = theme.charAt(0).toUpperCase() + theme.slice(1);
+        themeDisplay.textContent = theme === 'dark' ? 'Gelap' : 'Terang';
     }
     
     // Save theme preference to localStorage
     localStorage.setItem('preferredTheme', theme);
     
-    const emoji = theme === 'dark' ? '🌙' : '☀️';
-    showNotification(`${emoji} ${theme.charAt(0).toUpperCase() + theme.slice(1)} theme applied!`, 'success');
+    showNotification(`Tema ${theme === 'dark' ? 'Gelap' : 'Terang'} diterapkan!`, 'success');
 }
 
 // ===================================
@@ -319,7 +318,7 @@ window.addEventListener('load', () => {
         document.body.classList.add(`${savedTheme}-theme`);
         const themeDisplay = document.getElementById('currentTheme');
         if (themeDisplay) {
-            themeDisplay.textContent = savedTheme.charAt(0).toUpperCase() + savedTheme.slice(1);
+            themeDisplay.textContent = savedTheme === 'dark' ? 'Gelap' : 'Terang';
         }
     } else {
         // Default to light theme
@@ -329,7 +328,7 @@ window.addEventListener('load', () => {
     // Show welcome notification after a short delay
     setTimeout(() => {
         if (document.getElementById('notificationContainer')) {
-            showNotification('Welcome! Try out the interactive demos below! 👇', 'info');
+            showNotification('Selamat datang! Coba demo interaktif di bawah!', 'info');
         }
     }, 1000);
 });
@@ -619,6 +618,7 @@ function drawChartJS() {
 function randomizeData() {
     chartData = chartData.map(() => Math.floor(Math.random() * 100) + 20);
     
+    
     // Redraw both charts
     drawVanillaChart();
     drawChartJS();
@@ -642,3 +642,362 @@ function resetCharts() {
     
     showNotification('Charts reset! Click the buttons to draw them again ↺', 'info');
 }
+
+// ===================================
+// FETCH API DEMOS
+// ===================================
+
+// Sample employees data for array methods
+const employees = [
+    { id: 1, name: 'John Doe', department: 'Development', salary: 7000 },
+    { id: 2, name: 'Jane Smith', department: 'Design', salary: 6500 },
+    { id: 3, name: 'Bob Johnson', department: 'Development', salary: 8000 },
+    { id: 4, name: 'Alice Brown', department: 'Marketing', salary: 5500 },
+    { id: 5, name: 'Charlie Wilson', department: 'Development', salary: 7500 }
+];
+
+// Display sample data on page load
+window.addEventListener('DOMContentLoaded', () => {
+    const sampleDisplay = document.getElementById('sampleDataDisplay');
+    if (sampleDisplay) {
+        sampleDisplay.textContent = JSON.stringify(employees, null, 2);
+    }
+});
+
+// Fetch Users
+async function fetchUsers() {
+    const container = document.getElementById('usersContainer');
+    
+    // Show loading state
+    container.innerHTML = '<div class="api-result loading"><div class="spinner"></div>Loading users...</div>';
+    container.className = 'api-result loading';
+    
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const users = await response.json();
+        
+        // Show success state
+        container.className = 'api-result success';
+        container.innerHTML = users.slice(0, 5).map(user => `
+            <div class="user-item">
+                <h5>${user.name}</h5>
+                <p>📧 ${user.email}</p>
+                <p>🏢 ${user.company.name}</p>
+            </div>
+        `).join('');
+        
+        showNotification('Users loaded successfully! ✓', 'success');
+        
+    } catch (error) {
+        // Show error state
+        container.className = 'api-result error';
+        container.innerHTML = `<strong>Error:</strong> ${error.message}<br><br>Coba lagi atau check koneksi internet!`;
+        showNotification('Failed to fetch users ✗', 'error');
+    }
+}
+
+// Create Post
+async function createPost() {
+    const title = document.getElementById('postTitle').value;
+    const body = document.getElementById('postBody').value;
+    const resultContainer = document.getElementById('postResult');
+    
+    if (!title || !body) {
+        resultContainer.className = 'api-result error';
+        resultContainer.innerHTML = '<strong>Error:</strong> Isi title dan body dulu!';
+        return;
+    }
+    
+    // Show loading
+    resultContainer.innerHTML = '<div class="api-result loading"><div class="spinner"></div>Creating post...</div>';
+    resultContainer.className = 'api-result loading';
+    
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                title: title,
+                body: body,
+                userId: 1
+            })
+        });
+        
+        if (!response.ok) {
+            throw new Error('Failed to create post');
+        }
+        
+        const data = await response.json();
+        
+        // Show success
+        resultContainer.className = 'api-result success';
+        resultContainer.innerHTML = `
+            <strong>Post Created Successfully! ✓</strong><br><br>
+            <strong>ID:</strong> ${data.id}<br>
+            <strong>Title:</strong> ${data.title}<br>
+            <strong>Body:</strong> ${data.body}
+        `;
+        
+        // Clear form
+        document.getElementById('postTitle').value = '';
+        document.getElementById('postBody').value = '';
+        
+        showNotification('Post created! ✓', 'success');
+        
+    } catch (error) {
+        resultContainer.className = 'api-result error';
+        resultContainer.innerHTML = `<strong>Error:</strong> ${error.message}`;
+        showNotification('Failed to create post ✗', 'error');
+    }
+}
+
+// Fetch with Loading & Error States
+async function fetchWithStates() {
+    const container = document.getElementById('stateContainer');
+    
+    // 1. LOADING STATE
+    container.innerHTML = `
+        <div style="text-align: center; padding: 2rem;">
+            <div class="spinner"></div>
+            <p style="margin-top: 1rem; color: #666;">Loading data...</p>
+        </div>
+    `;
+    container.className = 'api-result loading';
+    
+    // Simulate delay to show loading state
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=3');
+        
+        if (!response.ok) {
+            throw new Error('HTTP error! status: ' + response.status);
+        }
+        
+        const posts = await response.json();
+        
+        // 2. SUCCESS STATE
+        container.className = 'api-result success';
+        container.innerHTML = `
+            <h5 style="color: #28a745; margin-bottom: 1rem;">✓ Success! Data loaded</h5>
+            ${posts.map(post => `
+                <div style="background: white; padding: 1rem; margin-bottom: 0.5rem; border-radius: 8px; border-left: 3px solid #28a745;">
+                    <strong>${post.title}</strong>
+                    <p style="margin: 0.5rem 0 0 0; color: #666; font-size: 0.9rem;">${post.body.substring(0, 100)}...</p>
+                </div>
+            `).join('')}
+        `;
+        
+        showNotification('Data fetched with proper state handling! ✓', 'success');
+        
+    } catch (error) {
+        // 3. ERROR STATE
+        container.className = 'api-result error';
+        container.innerHTML = `
+            <div style="text-align: center; padding: 2rem;">
+                <h5 style="color: #dc3545; margin-bottom: 1rem;">✗ Error Occurred</h5>
+                <p><strong>Message:</strong> ${error.message}</p>
+                <p style="color: #666; margin-top: 1rem;">Ini contoh error handling yang proper!</p>
+                <button class="btn btn-danger mt-2" onclick="fetchWithStates()">Retry</button>
+            </div>
+        `;
+        showNotification('Error encountered! Check error handling ✗', 'error');
+    }
+}
+
+// ===================================
+// ARRAY METHODS DEMOS
+// ===================================
+
+// .map() demo
+function demoMap() {
+    const result = document.getElementById('mapResult');
+    
+    // Example 1: Get names
+    const names = employees.map(emp => emp.name);
+    
+    // Example 2: Create simplified objects
+    const simplified = employees.map(emp => ({
+        name: emp.name,
+        salary: emp.salary
+    }));
+    
+    result.innerHTML = `
+        <strong>Original array:</strong> ${employees.length} employees<br><br>
+        
+        <strong>Example 1: Extract names</strong><br>
+        <pre>${JSON.stringify(names, null, 2)}</pre>
+        
+        <strong>Example 2: Simplified objects</strong><br>
+        <pre>${JSON.stringify(simplified, null, 2)}</pre>
+        
+        <p style="color: #28a745; margin-top: 1rem;">✓ .map() transformed ${employees.length} items!</p>
+    `;
+    
+    showNotification('.map() executed! Check the results', 'info');
+}
+
+// .filter() demo
+function demoFilter() {
+    const result = document.getElementById('filterResult');
+    
+    // Example 1: High earners
+    const highEarners = employees.filter(emp => emp.salary > 6000);
+    
+    // Example 2: Developers
+    const developers = employees.filter(emp => emp.department === 'Development');
+    
+    result.innerHTML = `
+        <strong>Original:</strong> ${employees.length} employees<br><br>
+        
+        <strong>Filter 1: Salary > 6000</strong><br>
+        Found: ${highEarners.length} employees<br>
+        <pre>${JSON.stringify(highEarners.map(e => ({name: e.name, salary: e.salary})), null, 2)}</pre>
+        
+        <strong>Filter 2: Department = "Development"</strong><br>
+        Found: ${developers.length} developers<br>
+        <pre>${JSON.stringify(developers.map(e => e.name), null, 2)}</pre>
+        
+        <p style="color: #28a745; margin-top: 1rem;">✓ .filter() reduced array based on conditions!</p>
+    `;
+    
+    showNotification('.filter() executed! Check the results', 'info');
+}
+
+// .reduce() demo
+function demoReduce() {
+    const result = document.getElementById('reduceResult');
+    
+    // Example 1: Total salary
+    const totalSalary = employees.reduce((sum, emp) => sum + emp.salary, 0);
+    
+    // Example 2: Average salary
+    const avgSalary = totalSalary / employees.length;
+    
+    // Example 3: Group by department
+    const grouped = employees.reduce((acc, emp) => {
+        const dept = emp.department;
+        if (!acc[dept]) acc[dept] = [];
+        acc[dept].push(emp.name);
+        return acc;
+    }, {});
+    
+    result.innerHTML = `
+        <strong>Reduce to single values:</strong><br><br>
+        
+        <strong>Total Salary:</strong> $${totalSalary.toLocaleString()}<br>
+        <strong>Average Salary:</strong> $${avgSalary.toLocaleString()}<br><br>
+        
+        <strong>Group by Department:</strong><br>
+        <pre>${JSON.stringify(grouped, null, 2)}</pre>
+        
+        <p style="color: #28a745; margin-top: 1rem;">✓ .reduce() collapsed array into single values and objects!</p>
+    `;
+    
+    showNotification('.reduce() executed! Powerful stuff', 'success');
+}
+
+// .find() demo
+function demoFind() {
+    const result = document.getElementById('findResult');
+    
+    // Example 1: Find by name
+    const john = employees.find(emp => emp.name === 'John Doe');
+    
+    // Example 2: Find by salary
+    const highestEarner = employees.find(emp => emp.salary >= 8000);
+    
+    // Example 3: findIndex
+    const bobIndex = employees.findIndex(emp => emp.name === 'Bob Johnson');
+    
+    result.innerHTML = `
+        <strong>Find specific items:</strong><br><br>
+        
+        <strong>Find "John Doe":</strong><br>
+        <pre>${john ? JSON.stringify(john, null, 2) : 'Not found'}</pre>
+        
+        <strong>Find salary >= 8000:</strong><br>
+        <pre>${highestEarner ? JSON.stringify(highestEarner, null, 2) : 'Not found'}</pre>
+        
+        <strong>Find index of "Bob Johnson":</strong> Index ${bobIndex}<br>
+        
+        <p style="color: #28a745; margin-top: 1rem;">✓ .find() returns first match, .findIndex() returns index!</p>
+    `;
+    
+    showNotification('.find() & .findIndex() executed!', 'info');
+}
+
+// .some() & .every() demo
+function demoSomeEvery() {
+    const result = document.getElementById('someEveryResult');
+    
+    // .some() examples
+    const hasHighEarner = employees.some(emp => emp.salary > 7500);
+    const hasMarketing = employees.some(emp => emp.department === 'Marketing');
+    
+    // .every() examples
+    const allAbove5k = employees.every(emp => emp.salary > 5000);
+    const allDevelopers = employees.every(emp => emp.department === 'Development');
+    
+    result.innerHTML = `
+        <strong>.some() - Check if ANY match:</strong><br>
+        • Has anyone earning > $7500? <strong style="color: ${hasHighEarner ? '#28a745' : '#dc3545'}">${hasHighEarner ? '✓ Yes' : '✗ No'}</strong><br>
+        • Has Marketing dept? <strong style="color: ${hasMarketing ? '#28a745' : '#dc3545'}">${hasMarketing ? '✓ Yes' : '✗ No'}</strong><br><br>
+        
+        <strong>.every() - Check if ALL match:</strong><br>
+        • Everyone earns > $5000? <strong style="color: ${allAbove5k ? '#28a745' : '#dc3545'}">${allAbove5k ? '✓ Yes' : '✗ No'}</strong><br>
+        • Everyone in Development? <strong style="color: ${allDevelopers ? '#28a745' : '#dc3545'}">${allDevelopers ? '✓ Yes' : '✗ No'}</strong><br><br>
+        
+        <p style="color: #0066cc; background: #e7f3ff; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+            <strong>Tip:</strong> .some() returns true if AT LEAST ONE matches.<br>
+            .every() returns true only if ALL match.
+        </p>
+    `;
+    
+    showNotification('.some() & .every() executed!', 'info');
+}
+
+// Method chaining demo
+function demoChaining() {
+    const result = document.getElementById('chainingResult');
+    
+    // Complex chaining example
+    const totalDevSalary = employees
+        .filter(emp => emp.department === 'Development')
+        .map(emp => emp.salary)
+        .reduce((sum, salary) => sum + salary, 0);
+    
+    // Another complex example
+    const topEarners = employees
+        .filter(emp => emp.salary > 6000)
+        .map(emp => ({
+            name: emp.name,
+            bonus: emp.salary * 0.1
+        }))
+        .sort((a, b) => b.bonus - a.bonus);
+    
+    result.innerHTML = `
+        <strong>Example 1: Total Development Department Salary</strong><br>
+        <code>.filter() → .map() → .reduce()</code><br>
+        Result: <strong>$${totalDevSalary.toLocaleString()}</strong><br><br>
+        
+        <strong>Example 2: Top Earners with 10% Bonus</strong><br>
+        <code>.filter() → .map() → .sort()</code><br>
+        <pre>${JSON.stringify(topEarners, null, 2)}</pre>
+        
+        <div style="background: #fff3cd; padding: 1rem; border-radius: 8px; margin-top: 1rem; border-left: 4px solid #ffc107;">
+            <strong>Pro Tip:</strong> Chaining works because most array methods return a new array!<br>
+            This makes code readable and functional. It's the preferred style in modern JavaScript.
+        </div>
+    `;
+    
+    showNotification('Method chaining executed! This is powerful stuff', 'success');
+}
+

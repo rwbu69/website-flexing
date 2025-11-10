@@ -225,6 +225,13 @@ body {
     margin-top: 2rem;
 }
 
+.comparison-grid-three {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
 .comparison-card {
     background: rgba(255,255,255,0.1);
     backdrop-filter: blur(10px);
@@ -241,6 +248,14 @@ body {
 .comparison-card ul {
     list-style: none;
     line-height: 2;
+}
+
+.comparison-card.tailwind {
+    border-color: rgba(139, 92, 246, 0.5);
+}
+
+.comparison-card.tailwind h3 {
+    color: #e1dcf1;
 }
 
 /* ===================================
@@ -309,3 +324,347 @@ body {
         font-size: 2rem;
     }
 }
+
+/* ===================================
+   FLEXBOX VS GRID SECTION
+   =================================== */
+.layout-comparison {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.layout-demo {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.layout-demo h3 {
+    color: #667eea;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.layout-demo p {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+/* Flexbox Demo */
+.flexbox-demo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.flex-item {
+    background: white;
+    color: #667eea;
+    padding: 2rem;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    flex: 1;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Grid Demo */
+.grid-demo-container {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 60px 1fr 60px;
+    gap: 1rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    min-height: 300px;
+}
+
+.grid-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #f5576c;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.grid-item.header {
+    grid-column: 1 / -1;
+}
+
+.grid-item.footer {
+    grid-column: 1 / -1;
+}
+
+.code-block {
+    background: #2d2d2d;
+    color: #f8f8f2;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.code-block code {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.flexbox-features ul,
+.grid-features ul {
+    list-style: none;
+    line-height: 2;
+    color: #333;
+}
+
+.flexbox-features strong,
+.grid-features strong {
+    color: #667eea;
+    display: block;
+    margin: 1rem 0 0.5rem 0;
+}
+
+/* Usage Guide */
+.usage-guide {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-top: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.usage-guide h3 {
+    color: #667eea;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.comparison-table {
+    display: grid;
+    gap: 1px;
+    background: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.comparison-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1px;
+    background: white;
+}
+
+.comparison-row > div {
+    padding: 1rem;
+    background: white;
+}
+
+.comparison-header {
+    background: #667eea !important;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.recommended {
+    color: #43e97b;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN SECTION
+   =================================== */
+.responsive-concepts {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.concept-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.concept-card h3 {
+    color: #667eea;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.concept-card p {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+.breakpoints-list {
+    list-style: none;
+    line-height: 2.5;
+    color: #333;
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.breakpoints-list li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.breakpoints-list li:last-child {
+    border-bottom: none;
+}
+
+.breakpoints-list strong {
+    color: #667eea;
+    font-family: 'Courier New', monospace;
+}
+
+.units-comparison {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.unit-item {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.unit-item strong {
+    color: #667eea;
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.unit-item p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.unit-item code {
+    background: #2d2d2d;
+    color: #43e97b;
+    padding: 0.5rem;
+    border-radius: 4px;
+    display: block;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+/* Responsive Demo */
+.responsive-demo {
+    margin-top: 3rem;
+}
+
+.responsive-demo h3 {
+    text-align: center;
+    color: white;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.responsive-showcase {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.responsive-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.device-label {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Media queries for responsive demo */
+@media (max-width: 1280px) {
+    .responsive-box {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+    .device-label::after {
+        content: " [Laptop 1280px]";
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+}
+
+@media (max-width: 1024px) {
+    .responsive-box {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    .device-label::after {
+        content: " [Tablet Landscape 1024px]";
+    }
+}
+
+@media (max-width: 768px) {
+    .responsive-box {
+        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    }
+    .device-label::after {
+        content: " [Tablet 768px]";
+    }
+    
+    .layout-comparison {
+        grid-template-columns: 1fr;
+    }
+    
+    .comparison-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .comparison-header:first-child {
+        display: none;
+    }
+    
+    .units-comparison {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .responsive-box {
+        background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        padding: 1.5rem;
+    }
+    .device-label {
+        font-size: 1rem;
+    }
+    .device-label::after {
+        content: " [Phone 480px]";
+    }
+}
+

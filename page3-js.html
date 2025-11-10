@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Showcase - Interactive Portfolio</title>
+    <title>Showcase JavaScript - Portfolio Interaktif</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="js-styles.css">
@@ -14,9 +14,9 @@
     <!-- Navigation -->
     <nav class="custom-nav">
         <ul class="nav-list">
-            <li><a href="index.html">Page 1: HTML Only</a></li>
-            <li><a href="page2-css.html">Page 2: HTML + CSS</a></li>
-            <li><a href="page3-js.html" class="active">Page 3: HTML + CSS + JS</a></li>
+            <li><a href="index.html">Halaman 1: HTML Doang</a></li>
+            <li><a href="page2-css.html">Halaman 2: HTML + CSS</a></li>
+            <li><a href="page3-js.html" class="active">Halaman 3: HTML + CSS + JS</a></li>
         </ul>
     </nav>
 
@@ -26,7 +26,7 @@
             <h1 class="animated-title" id="heroTitle">Sebastian Vay Yosafat Pardamean Hutagalung</h1>
             <p class="animated-subtitle" id="heroSubtitle">Pengangguran dengan gaya</p>
             <button class="btn btn-light btn-lg animated-btn" onclick="changeHeroText()">
-                Click to Change Text!
+                Klik buat Ganti Teks!
             </button>
         </div>
         <div class="floating-shapes">
@@ -40,26 +40,35 @@
     <!-- JavaScript Explanation Section -->
     <section class="explanation-section">
         <div class="container">
-            <h2 class="text-center mb-5">What JavaScript Can Do</h2>
+            <h2 class="text-center mb-5">Apa yang Bisa Dilakuin JavaScript</h2>
             
             <div class="row g-4">
                 <div class="col-md-6">
                     <div class="explanation-card">
-                        <div class="icon-circle">🎨</div>
-                        <h3>Animations & Interactions</h3>
-                        <p><strong>What it does:</strong> JavaScript can manipulate CSS properties in real-time, creating smooth animations and responding to user actions.</p>
-                        <p><strong>Examples:</strong> Scrolling effects, hover animations, transitions between states, parallax effects.</p>
-                        <p><strong>Why use it:</strong> Makes websites feel alive and engaging, improving user experience.</p>
+                        <div class="icon-circle">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <h3>Animasi & Interaksi</h3>
+                        <p><strong>Fungsinya:</strong> JavaScript bisa manipulasi properti CSS secara real-time, bikin animasi smooth dan bereaksi terhadap aksi user.</p>
+                        <p><strong>Contoh:</strong> Efek scrolling, animasi hover, transisi antar state, efek parallax.</p>
+                        <p><strong>Kenapa pake ini:</strong> Bikin website terasa hidup dan engaging, ningkatin user experience.</p>
                     </div>
                 </div>
                 
                 <div class="col-md-6">
                     <div class="explanation-card">
-                        <div class="icon-circle">⚡</div>
-                        <h3>Functionality & Logic</h3>
-                        <p><strong>What it does:</strong> JavaScript handles user interactions, processes data, makes calculations, and controls website behavior.</p>
-                        <p><strong>Examples:</strong> Form validation, buttons, alerts, modals, data fetching, calculations.</p>
-                        <p><strong>Why use it:</strong> Enables dynamic, interactive features that respond to user input.</p>
+                        <div class="icon-circle">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                            </svg>
+                        </div>
+                        <h3>Fungsionalitas & Logika</h3>
+                        <p><strong>Fungsinya:</strong> JavaScript handle interaksi user, proses data, bikin kalkulasi, dan kontrol behavior website.</p>
+                        <p><strong>Contoh:</strong> Validasi form, buttons, alerts, modals, fetching data, kalkulasi.</p>
+                        <p><strong>Kenapa pake ini:</strong> Enables fitur interaktif dan dinamis yang bereaksi terhadap input user.</p>
                     </div>
                 </div>
             </div>
@@ -69,25 +78,25 @@
     <!-- Interactive Demos Section -->
     <section class="demos-section">
         <div class="container">
-            <h2 class="text-center mb-5">Interactive JavaScript Demos</h2>
+            <h2 class="text-center mb-5">Demo Interaktif JavaScript</h2>
 
             <!-- Demo 1: Button Interactions -->
             <div class="demo-box">
-                <h3>Demo 1: Button Interactions & Alerts</h3>
-                <p>JavaScript can respond to button clicks and show messages:</p>
+                <h3>Demo 1: Interaksi Tombol & Alert</h3>
+                <p>JavaScript bisa bereaksi terhadap klik tombol dan nampil pesan:</p>
                 <div class="button-group">
-                    <button class="btn btn-primary" onclick="showAlert()">Show Alert</button>
-                    <button class="btn btn-success" onclick="showConfirm()">Show Confirm</button>
-                    <button class="btn btn-info" onclick="changeBackgroundColor()">Change Background</button>
-                    <button class="btn btn-warning" onclick="showPrompt()">Get Your Name</button>
+                    <button class="btn btn-primary" onclick="showAlert()">Tunjukkin Alert</button>
+                    <button class="btn btn-success" onclick="showConfirm()">Confirm Dialog</button>
+                    <button class="btn btn-info" onclick="changeBackgroundColor()">Ganti Background</button>
+                    <button class="btn btn-warning" onclick="showPrompt()">Masukin Nama</button>
                 </div>
                 <div id="messageDisplay" class="message-display"></div>
             </div>
 
             <!-- Demo 2: Counter -->
             <div class="demo-box">
-                <h3>Demo 2: Dynamic Content Updates</h3>
-                <p>JavaScript can update content without page reload:</p>
+                <h3>Demo 2: Update Konten Dinamis</h3>
+                <p>JavaScript bisa update konten tanpa reload halaman:</p>
                 <div class="counter-container">
                     <button class="btn btn-danger" onclick="decrementCounter()">-</button>
                     <span class="counter-display" id="counterDisplay">0</span>
@@ -98,8 +107,8 @@
 
             <!-- Demo 3: Animations -->
             <div class="demo-box">
-                <h3>Demo 3: JavaScript-Controlled Animations</h3>
-                <p>JavaScript can trigger and control animations:</p>
+                <h3>Demo 3: Animasi yang Dikontrol JavaScript</h3>
+                <p>JavaScript bisa trigger dan kontrol animasi:</p>
                 <div class="animation-controls">
                     <button class="btn btn-primary" onclick="animateBox('bounce')">Bounce</button>
                     <button class="btn btn-success" onclick="animateBox('spin')">Spin</button>
@@ -108,20 +117,20 @@
                     <button class="btn btn-secondary" onclick="stopAnimation()">Stop</button>
                 </div>
                 <div class="animated-box" id="animatedBox">
-                    Animate Me!
+                    Animasiin Gue!
                 </div>
             </div>
 
             <!-- Demo 4: Form Validation -->
             <div class="demo-box">
-                <h3>Demo 4: Form Validation</h3>
-                <p>JavaScript validates user input before submission:</p>
+                <h3>Demo 4: Validasi Form</h3>
+                <p>JavaScript validasi input user sebelum submit:</p>
                 <form id="demoForm" onsubmit="return validateForm(event)">
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="nameInput" placeholder="Enter your name (min 3 characters)">
+                        <input type="text" class="form-control" id="nameInput" placeholder="Masukin nama lo (minimal 3 karakter)">
                     </div>
                     <div class="mb-3">
-                        <input type="email" class="form-control" id="emailInput" placeholder="Enter your email">
+                        <input type="email" class="form-control" id="emailInput" placeholder="Masukin email lo">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -130,36 +139,36 @@
 
             <!-- Demo 5: Interactive List -->
             <div class="demo-box">
-                <h3>Demo 5: Dynamic List Management</h3>
-                <p>JavaScript can add, remove, and manage content dynamically:</p>
+                <h3>Demo 5: Manajemen List Dinamis</h3>
+                <p>JavaScript bisa tambah, hapus, dan kelola konten secara dinamis:</p>
                 <div class="mb-3">
-                    <input type="text" class="form-control" id="listInput" placeholder="Enter a task or item">
-                    <button class="btn btn-primary mt-2" onclick="addListItem()">Add Item</button>
-                    <button class="btn btn-danger mt-2" onclick="clearList()">Clear All</button>
+                    <input type="text" class="form-control" id="listInput" placeholder="Masukin task atau item">
+                    <button class="btn btn-primary mt-2" onclick="addListItem()">Tambah Item</button>
+                    <button class="btn btn-danger mt-2" onclick="clearList()">Hapus Semua</button>
                 </div>
                 <ul id="dynamicList" class="dynamic-list"></ul>
             </div>
 
             <!-- Demo 6: Theme Switcher -->
             <div class="demo-box">
-                <h3>Demo 6: Theme Switcher</h3>
-                <p>JavaScript can dynamically change the entire page appearance:</p>
+                <h3>Demo 6: Ganti Tema</h3>
+                <p>JavaScript bisa ganti tampilan seluruh halaman secara dinamis:</p>
                 <div class="theme-buttons">
-                    <button class="btn btn-light" onclick="changeTheme('light')">☀️ Light Theme</button>
-                    <button class="btn btn-dark" onclick="changeTheme('dark')">🌙 Dark Theme</button>
+                    <button class="btn btn-light" onclick="changeTheme('light')">Tema Terang</button>
+                    <button class="btn btn-dark" onclick="changeTheme('dark')">Tema Gelap</button>
                 </div>
-                <p class="mt-3"><small><em>Current theme: <span id="currentTheme">Light</span></em></small></p>
+                <p class="mt-3"><small><em>Tema sekarang: <span id="currentTheme">Terang</span></em></small></p>
             </div>
 
             <!-- Demo 7: Anime.js Advanced Animations -->
             <div class="demo-box">
-                <h3>Demo 7: Anime.js Framework - Advanced Animations</h3>
-                <p>Anime.js is a lightweight JavaScript animation library that makes complex animations easy!</p>
+                <h3>Demo 7: Anime.js Framework - Animasi Advanced</h3>
+                <p>Anime.js adalah library animasi JavaScript yang ringan dan bikin animasi kompleks jadi gampang!</p>
                 
                 <div class="anime-showcase">
                     
                     <div class="anime-demo">
-                        <h5>Staggered Animation</h5>
+                        <h5>Animasi Bertahap (Stagger)</h5>
                         <div class="stagger-container">
                             <div class="stagger-box"></div>
                             <div class="stagger-box"></div>
@@ -167,11 +176,11 @@
                             <div class="stagger-box"></div>
                             <div class="stagger-box"></div>
                         </div>
-                        <button class="btn btn-success btn-sm mt-2" onclick="animateStagger()">Stagger Animation</button>
+                        <button class="btn btn-success btn-sm mt-2" onclick="animateStagger()">Animasi Stagger</button>
                     </div>
                     
                     <div class="anime-demo">
-                        <h5>Morphing Text</h5>
+                        <h5>Teks Bergerak</h5>
                         <div class="morphing-text">
                             <span class="letter">A</span>
                             <span class="letter">N</span>
@@ -182,43 +191,43 @@
                             <span class="letter">J</span>
                             <span class="letter">S</span>
                         </div>
-                        <button class="btn btn-info btn-sm mt-2" onclick="animateText()">Animate Text</button>
+                        <button class="btn btn-info btn-sm mt-2" onclick="animateText()">Animasiin Teks</button>
                     </div>
                     
                     <div class="anime-demo">
-                        <h5>Timeline Animation</h5>
+                        <h5>Timeline Animasi</h5>
                         <div class="timeline-demo">
                             <div class="timeline-box box1"></div>
                             <div class="timeline-box box2"></div>
                             <div class="timeline-box box3"></div>
                         </div>
-                        <button class="btn btn-warning btn-sm mt-2" onclick="animateTimeline()">Timeline Demo</button>
+                        <button class="btn btn-warning btn-sm mt-2" onclick="animateTimeline()">Demo Timeline</button>
                     </div>
                 </div>
                 
                 <div class="alert alert-info mt-3">
-                    <strong>Why use Anime.js?</strong> It provides precise control over animations, supports SVG, handles complex timelines, and has a small file size (~9kb). Perfect for creating smooth, professional animations!
+                    <strong>Kenapa pake Anime.js?</strong> Kasih kontrol presisi atas animasi, support SVG, handle timeline kompleks, dan ukuran file kecil (~9kb). Cocok buat bikin animasi smooth dan profesional!
                 </div>
             </div>
 
             <!-- Demo 8: Data Visualization - Vanilla JS vs Chart.js -->
             <div class="demo-box">
-                <h3>Demo 8: Data Visualization - Vanilla JS vs Chart.js Framework</h3>
-                <p>Compare creating charts with pure JavaScript versus using a framework like Chart.js!</p>
+                <h3>Demo 8: Visualisasi Data - Vanilla JS vs Chart.js Framework</h3>
+                <p>Bandingin bikin chart pake pure JavaScript vs pake framework macam Chart.js!</p>
                 
                 <div class="row g-4 mb-3">
                     <div class="col-md-6">
                         <div class="chart-container">
-                            <h5>Vanilla JavaScript Chart</h5>
+                            <h5>Chart Vanilla JavaScript</h5>
                             <canvas id="vanillaChart" width="400" height="300"></canvas>
-                            <button class="btn btn-primary btn-sm mt-2" onclick="drawVanillaChart()">Draw Vanilla Chart</button>
+                            <button class="btn btn-primary btn-sm mt-2" onclick="drawVanillaChart()">Gambar Chart Vanilla</button>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="chart-container">
                             <h5>Chart.js Framework</h5>
                             <canvas id="chartjsChart" width="400" height="300"></canvas>
-                            <button class="btn btn-success btn-sm mt-2" onclick="drawChartJS()">Draw Chart.js</button>
+                            <button class="btn btn-success btn-sm mt-2" onclick="drawChartJS()">Gambar Chart.js</button>
                         </div>
                     </div>
                 </div>
@@ -229,12 +238,12 @@
                             <div class="comparison-item vanilla">
                                 <h6>Vanilla JavaScript</h6>
                                 <ul>
-                                    <li>✓ Full control over every pixel</li>
-                                    <li>✓ No dependencies</li>
-                                    <li>✓ Learn canvas fundamentals</li>
-                                    <li>✗ More code to write</li>
-                                    <li>✗ Manual calculations</li>
-                                    <li>✗ No built-in interactivity</li>
+                                    <li>✓ Kontrol penuh tiap pixel</li>
+                                    <li>✓ Gak ada dependency</li>
+                                    <li>✓ Belajar fundamental canvas</li>
+                                    <li>✗ Lebih banyak kode yang ditulis</li>
+                                    <li>✗ Kalkulasi manual</li>
+                                    <li>✗ Gak ada interaktivitas bawaan</li>
                                 </ul>
                             </div>
                         </div>
@@ -242,12 +251,12 @@
                             <div class="comparison-item framework">
                                 <h6>Chart.js Framework</h6>
                                 <ul>
-                                    <li>✓ Quick and easy setup</li>
-                                    <li>✓ Built-in animations</li>
-                                    <li>✓ Interactive tooltips</li>
+                                    <li>✓ Setup cepet dan gampang</li>
+                                    <li>✓ Animasi bawaan</li>
+                                    <li>✓ Tooltip interaktif</li>
                                     <li>✓ Responsive by default</li>
-                                    <li>✗ External dependency (~60kb)</li>
-                                    <li>✗ Less customization control</li>
+                                    <li>✗ Dependency eksternal (~60kb)</li>
+                                    <li>✗ Kontrol kustomisasi terbatas</li>
                                 </ul>
                             </div>
                         </div>
@@ -255,8 +264,8 @@
                 </div>
                 
                 <div class="data-controls mt-3">
-                    <button class="btn btn-info" onclick="randomizeData()">🎲 Randomize Data</button>
-                    <button class="btn btn-secondary" onclick="resetCharts()">↺ Reset Charts</button>
+                    <button class="btn btn-info" onclick="randomizeData()">Acak Data</button>
+                    <button class="btn btn-secondary" onclick="resetCharts()">Reset Chart</button>
                 </div>
             </div>
 
@@ -265,30 +274,55 @@
         </div>
     </section>
 
-    <!-- Real-world Use Cases -->
-    <section class="use-cases-section">
+    <!-- JavaScript Frameworks Showcase -->
+    <section class="frameworks-section">
         <div class="container">
-            <h2 class="text-center mb-5">Real-World JavaScript Use Cases</h2>
+            <h2 class="text-center mb-5">Framework & Library JavaScript</h2>
+            <p class="text-center mb-5">JavaScript punya ekosistem framework dan library yang kaya, bikin development lebih cepet dan gampang!</p>
+            
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="use-case-card">
-                        <h4>🔔 Notifications</h4>
-                        <p>Alert users about important events, updates, or actions without page reload.</p>
-                        <button class="btn btn-sm btn-outline-primary" onclick="showNotification('Notification system working! 🎉', 'success')">Try It</button>
+                    <div class="framework-card">
+                        <div class="framework-icon">
+                            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                                <line x1="9" y1="9" x2="9.01" y2="9"/>
+                                <line x1="15" y1="9" x2="15.01" y2="9"/>
+                            </svg>
+                        </div>
+                        <h4>Anime.js</h4>
+                        <p><strong>Tujuan:</strong> Library animasi</p>
+                        <p><strong>Ukuran:</strong> ~9kb</p>
+                        <p>Bikin animasi kompleks dengan syntax simpel. Support CSS, SVG, DOM attributes, dan JavaScript objects.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="use-case-card">
-                        <h4>📊 Data Visualization</h4>
-                        <p>Process and display data dynamically, update charts and graphs in real-time.</p>
-                        <button class="btn btn-sm btn-outline-success" onclick="showDataExample()">Try It</button>
+                    <div class="framework-card">
+                        <div class="framework-icon">
+                            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <line x1="18" y1="20" x2="18" y2="10"/>
+                                <line x1="12" y1="20" x2="12" y2="4"/>
+                                <line x1="6" y1="20" x2="6" y2="14"/>
+                            </svg>
+                        </div>
+                        <h4>Chart.js</h4>
+                        <p><strong>Tujuan:</strong> Visualisasi data</p>
+                        <p><strong>Ukuran:</strong> ~60kb</p>
+                        <p>Library charting JavaScript yang simpel tapi fleksibel. Support 8 tipe chart dengan animasi dan interaksi.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="use-case-card">
-                        <h4>🎮 Interactive UI</h4>
-                        <p>Create drag-and-drop, modals, dropdowns, and other interactive components.</p>
-                        <button class="btn btn-sm btn-outline-info" onclick="showModal()">Try It</button>
+                    <div class="framework-card">
+                        <div class="framework-icon">
+                            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                            </svg>
+                        </div>
+                        <h4>Vanilla JS</h4>
+                        <p><strong>Tujuan:</strong> JavaScript murni</p>
+                        <p><strong>Ukuran:</strong> 0kb</p>
+                        <p>Pure JavaScript tanpa framework apapun. Kontrol maksimal, gak ada dependency, performa tercepet.</p>
                     </div>
                 </div>
             </div>
@@ -299,10 +333,10 @@
     <div class="custom-modal" id="customModal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
-            <h3>JavaScript Modal</h3>
-            <p>This modal was created and controlled entirely with JavaScript!</p>
-            <p>JavaScript allows you to create dynamic overlays, popups, and interactive elements.</p>
-            <button class="btn btn-primary" onclick="closeModal()">Close</button>
+            <h3>Modal JavaScript</h3>
+            <p>Modal ini dibuat dan dikontrol sepenuhnya pake JavaScript!</p>
+            <p>JavaScript memungkinkan lo bikin overlay dinamis, popup, dan elemen interaktif lainnya.</p>
+            <button class="btn btn-primary" onclick="closeModal()">Tutup</button>
         </div>
     </div>
 
@@ -312,34 +346,34 @@
     <!-- Summary Section -->
     <section class="summary-section">
         <div class="container">
-            <h2 class="text-center mb-4">The Power of HTML + CSS + JavaScript</h2>
+            <h2 class="text-center mb-4">Kekuatan HTML + CSS + JavaScript</h2>
             <div class="summary-grid">
                 <div class="summary-card">
                     <h3>HTML</h3>
-                    <p>The Structure</p>
-                    <p>Defines content and semantic meaning</p>
+                    <p>Strukturnya</p>
+                    <p>Definisi konten dan makna semantik</p>
                 </div>
                 <div class="summary-card">
                     <h3>CSS</h3>
-                    <p>The Style</p>
-                    <p>Controls appearance and layout</p>
+                    <p>Gayanya</p>
+                    <p>Kontrol tampilan dan layout</p>
                 </div>
                 <div class="summary-card">
                     <h3>JavaScript</h3>
-                    <p>The Behavior</p>
-                    <p>Adds interactivity and functionality</p>
+                    <p>Perilakunya</p>
+                    <p>Tambahin interaktivitas dan fungsionalitas</p>
                 </div>
             </div>
             <div class="text-center mt-4">
-                <p class="lead">Together, they create the complete front-end experience! 🚀</p>
+                <p class="lead">Bareng-bareng, mereka bikin pengalaman front-end yang lengkap!</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="custom-footer">
-        <p><strong>Congratulations!</strong> You've experienced the complete front-end stack!</p>
-        <p>Go back to <a href="index.html">Page 1</a> to see the progression again.</p>
+        <p><strong>Selamat!</strong> Lo udah ngalamin stack front-end yang lengkap + real-world patterns!</p>
+        <p>Balik ke <a href="index.html">Halaman 1</a> buat liat progressinya lagi.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
