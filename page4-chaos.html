@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mode Kekacauan - Animasi Gila!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chaos-styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="custom-nav">
+        <ul class="nav-list">
+            <li><a href="index.html">Halaman 1: HTML</a></li>
+            <li><a href="page2-css.html">Halaman 2: CSS</a></li>
+            <li><a href="page3-js.html">Halaman 3: JavaScript</a></li>
+            <li><a href="page4-chaos.html" class="active">Halaman 4: CHAOS MODE 🔥</a></li>
+        </ul>
+    </nav>
+
+    <!-- Chaotic Hero Section -->
+    <section class="chaos-hero">
+        <div class="hero-content">
+            <h1 class="exploding-title" id="chaosTitle">MODE KEKACAUAN DIAKTIFKAN</h1>
+            <p class="glitch-text" id="chaosSubtitle">Bersiaplah untuk Animasi yang Gila!</p>
+            <button class="btn btn-danger btn-lg chaos-btn" onclick="startChaos()">
+                🔥 LEPASKAN KEKACAUANNYA 🔥
+            </button>
+        </div>
+        
+        <!-- Flying Objects -->
+        <div id="flyingObjects"></div>
+        
+        <!-- Particle System -->
+        <canvas id="particleCanvas"></canvas>
+    </section>
+
+    <!-- Running Letters Section -->
+    <section class="running-letters-section">
+        <div class="container">
+            <h2 class="text-center mb-5 shake-title">Huruf yang Lari dari Kursor Anda! 🏃</h2>
+            
+            <div class="letter-playground" id="letterPlayground">
+                <span class="running-letter" data-letter="H">H</span>
+                <span class="running-letter" data-letter="E">E</span>
+                <span class="running-letter" data-letter="L">L</span>
+                <span class="running-letter" data-letter="L">L</span>
+                <span class="running-letter" data-letter="O">O</span>
+                <span class="running-letter" data-letter="!">!</span>
+                <span class="running-letter" data-letter=" "> </span>
+                <span class="running-letter" data-letter="C">C</span>
+                <span class="running-letter" data-letter="A">A</span>
+                <span class="running-letter" data-letter="T">T</span>
+                <span class="running-letter" data-letter="C">C</span>
+                <span class="running-letter" data-letter="H">H</span>
+                <span class="running-letter" data-letter=" "> </span>
+                <span class="running-letter" data-letter="M">M</span>
+                <span class="running-letter" data-letter="E">E</span>
+                <span class="running-letter" data-letter="!">!</span>
+            </div>
+            
+            <p class="text-center mt-4">Gerakkan kursor Anda dekat huruf-huruf tersebut dan saksikan mereka lari! 🎯</p>
+        </div>
+    </section>
+
+    <!-- Spinning Text Chaos -->
+    <section class="spinning-chaos-section">
+        <div class="container">
+            <h2 class="text-center mb-5 rainbow-text">Teks Berputar di Mana-mana! 🌀</h2>
+            
+            <div class="spinning-container">
+                <div class="spinning-word spin-1">CHAOS</div>
+                <div class="spinning-word spin-2">MADNESS</div>
+                <div class="spinning-word spin-3">INSANE</div>
+                <div class="spinning-word spin-4">WILD</div>
+                <div class="spinning-word spin-5">CRAZY</div>
+                <div class="spinning-word spin-6">ANIME.JS</div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <button class="btn btn-warning btn-lg" onclick="spinAllWords()">
+                    🌪️ Putar Semuanya!
+                </button>
+                <button class="btn btn-info btn-lg" onclick="explodeWords()">
+                    💥 Meledak!
+                </button>
+                <button class="btn btn-success btn-lg" onclick="waveWords()">
+                    🌊 Gerakan Ombak!
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Morphing Shapes -->
+    <section class="morphing-section">
+        <div class="container">
+            <h2 class="text-center mb-5 wobble-title">Bentuk yang Berubah! 🔄</h2>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="morph-container">
+                        <svg id="morphingSVG" width="400" height="400" viewBox="0 0 400 400">
+                            <path id="morphPath" fill="#667eea" />
+                        </svg>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class="btn btn-primary" onclick="morphShape('circle')">Lingkaran</button>
+                        <button class="btn btn-primary" onclick="morphShape('square')">Kotak</button>
+                        <button class="btn btn-primary" onclick="morphShape('star')">Bintang</button>
+                        <button class="btn btn-primary" onclick="morphShape('heart')">Hati</button>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="bouncing-balls" id="bouncingBalls">
+                        <!-- Balls will be generated by JS -->
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class="btn btn-danger" onclick="createBouncingBalls()">
+                            🎾 Buat Bola Memantul!
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Text Explosion Section -->
+    <section class="explosion-section">
+        <div class="container">
+            <h2 class="text-center mb-5 pulse-title">Ledakan Teks! 💥</h2>
+            
+            <div class="explosion-area" id="explosionArea">
+                <div class="explodable-text" id="explodableText">
+                    KLIK SAYA UNTUK MELEDAK!
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn btn-danger btn-lg" onclick="explodeText()">
+                    💣 Ledakkan Teks!
+                </button>
+                <button class="btn btn-success btn-lg" onclick="resetExplosion()">
+                    🔄 Atur Ulang
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gravity Text -->
+    <section class="gravity-section">
+        <div class="container">
+            <h2 class="text-center mb-5 flip-title">Huruf Jatuh dengan Gravitasi! 🌍</h2>
+            
+            <div class="gravity-container" id="gravityContainer">
+                <button class="btn btn-warning btn-lg mb-4" onclick="dropLetters()">
+                    ⬇️ Jatuhkan Semua Huruf!
+                </button>
+                <div class="gravity-text" id="gravityText">
+                    HURUF GRAVITASI JATUH KE BAWAH
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Path Animation -->
+    <section class="path-section">
+        <div class="container">
+            <h2 class="text-center mb-5 slide-title">Ikuti Jalur yang Gila! 🎢</h2>
+            
+            <div class="path-container">
+                <svg id="pathSVG" width="800" height="400" viewBox="0 0 800 400">
+                    <path id="motionPath" 
+                          d="M 100,200 Q 200,100 400,200 T 700,200" 
+                          stroke="#667eea" 
+                          stroke-width="3" 
+                          fill="none"/>
+                    <circle id="pathBall" r="20" fill="#f5576c"/>
+                    <text id="pathText" font-size="24" fill="#764ba2">YEAY!</text>
+                </svg>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn btn-primary btn-lg" onclick="animatePath()">
+                    🎢 Mulai Perjalanan!
+                </button>
+                <button class="btn btn-secondary btn-lg" onclick="reversePathAnimation()">
+                    ⏪ Balik Arah!
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stagger Animation Showcase -->
+    <section class="stagger-section">
+        <div class="container">
+            <h2 class="text-center mb-5 rotate-title">Animasi Bertahap! 📊</h2>
+            
+            <div class="stagger-grid" id="staggerGrid">
+                <!-- Grid items will be generated by JS -->
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn btn-info btn-lg" onclick="staggerGridIn()">
+                    ⬇️ Masuk Bertahap
+                </button>
+                <button class="btn btn-warning btn-lg" onclick="staggerGridOut()">
+                    ⬆️ Keluar Bertahap
+                </button>
+                <button class="btn btn-danger btn-lg" onclick="chaosGrid()">
+                    🌀 Mode Kekacauan!
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mouse Trail -->
+    <section class="trail-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Efek Jejak Mouse! ✨</h2>
+            
+            <div class="trail-playground" id="trailPlayground">
+                <p class="text-center" style="font-size: 1.5rem; padding: 3rem;">
+                    Gerakkan mouse Anda di area ini dan lihat keajaibannya! 🎨
+                </p>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn btn-primary" onclick="changeTrailColor('gradient1')">Warna 1</button>
+                <button class="btn btn-success" onclick="changeTrailColor('gradient2')">Warna 2</button>
+                <button class="btn btn-warning" onclick="changeTrailColor('gradient3')">Warna 3</button>
+                <button class="btn btn-danger" onclick="clearTrail()">Bersihkan Jejak</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shake Everything Button -->
+    <section class="final-chaos-section">
+        <div class="container text-center">
+            <h2 class="mega-title mb-5">KEKACAUAN MAKSIMAL!</h2>
+            
+            <div class="chaos-buttons">
+                <button class="btn btn-danger btn-lg mega-btn" onclick="shakeEverything()">
+                    🌍 GUNCANG SEMUANYA!
+                </button>
+                <button class="btn btn-warning btn-lg mega-btn" onclick="rainbowEverything()">
+                    🌈 MODE PELANGI!
+                </button>
+                <button class="btn btn-info btn-lg mega-btn" onclick="rotateAllSections()">
+                    🔄 PUTAR SEMUA!
+                </button>
+                <button class="btn btn-success btn-lg mega-btn" onclick="resetEverything()">
+                    ✅ Atur Ulang Semua
+                </button>
+            </div>
+            
+            <div class="mt-5">
+                <h3>Statistik Animasi:</h3>
+                <div class="stats-display">
+                    <div class="stat-item">
+                        <span class="stat-label">Animasi Berjalan:</span>
+                        <span class="stat-value" id="animCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Level Kekacauan:</span>
+                        <span class="stat-value" id="chaosLevel">0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Normal -->
+    <footer class="custom-footer">
+        <p><strong>Sudah cukup dengan kekacauannya?</strong> 😅</p>
+        <p>Kembali ke <a href="page3-js.html">Halaman 3 (Mode Normal)</a> atau mulai dari <a href="index.html">Halaman 1</a></p>
+        <p><small>Peringatan: Dapat menyebabkan pusing, kegembiraan, dan senyum yang tidak terkendali! 😄</small></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="chaos-script.js"></script>
+</body>
+</html>
